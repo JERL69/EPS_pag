@@ -7,6 +7,12 @@
     <!-- Modern Typography from Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Sign-In e Identity -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -180,18 +186,8 @@
                             </div>
                         </div>
 
-                        <!-- Mock ReCAPTCHA Widget -->
-                        <div class="recaptcha-widget-mock">
-                            <div class="recaptcha-checkbox-container">
-                                <input type="checkbox" id="captcha-checkbox" onchange="toggleCaptcha(this)">
-                                <label for="captcha-checkbox" class="recaptcha-label">I'm not a robot</label>
-                            </div>
-                            <div class="recaptcha-logo-side">
-                                <span class="recaptcha-spinner-icon">🔄</span>
-                                <span class="recaptcha-small-text">reCAPTCHA</span>
-                                <a href="#" class="recaptcha-privacy-link">Privacy - Terms</a>
-                            </div>
-                        </div>
+                        <!-- Real ReCAPTCHA Widget -->
+                        <div class="g-recaptcha" data-sitekey="6LeRLu8sAAAAAEfbKw8K5budaTgHIeP-CxRmbnO-" data-callback="toggleCaptcha" data-expired-callback="toggleCaptchaExpired" style="margin-bottom: 15px;"></div>
                         <span class="error-captcha-msg" id="error-captcha">Debes completar el captcha para continuar.</span>
 
                         <button type="submit" class="btn-auth-submit-disabled" id="btn-submit-paso1" disabled>Iniciar validación y registro</button>
@@ -357,14 +353,25 @@
                         <button type="submit" class="btn-auth-primary-submit">Ingresar</button>
                     </form>
 
-                    <!-- Google Sign-In Simulator Button -->
+                    <!-- Real Google Sign-In Button -->
                     <div class="google-signin-separator">
                         <span>O ingresa con tu cuenta preferida</span>
                     </div>
-                    <button class="btn-google-signin" onclick="simularGoogleLogin()">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="google-icon">
-                        Iniciar sesión con Google
-                    </button>
+                    <div id="g_id_onload"
+                         data-client_id="818539186537-vtasjevi43p5mto1qrikijgncssjrhip.apps.googleusercontent.com"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleGoogleLogin"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-shape="rectangular"
+                         data-theme="outline"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
 
                     <div class="demo-credentials-box">
                         <strong>Cuentas Demo de Prueba:</strong>
@@ -432,7 +439,7 @@
     <!-- ================================================================= -->
     <!-- 7. PANTALLA: PANEL DEL PACIENTE (DASHBOARD)                       -->
     <!-- ================================================================= -->
-    <section id="pantalla-paciente-dashboard" class="pantalla-seccion main-dashboard-layout">
+    <section id="pantalla-paciente-dashboard" class="pantalla-seccion main-dashboard-layout" style="flex-direction: row !important; align-items: flex-start;">
         <!-- Sidebar Izquierdo -->
         <aside class="dashboard-sidebar">
             <div class="sidebar-brand">
@@ -1033,7 +1040,7 @@
     <!-- ================================================================= -->
     <!-- 8. PANTALLA: PANEL DE ADMINISTRADOR (DASHBOARD)                   -->
     <!-- ================================================================= -->
-    <section id="pantalla-admin-dashboard" class="pantalla-seccion main-dashboard-layout">
+    <section id="pantalla-admin-dashboard" class="pantalla-seccion main-dashboard-layout" style="flex-direction: row !important; align-items: flex-start;">
         <!-- Sidebar Admin -->
         <aside class="dashboard-sidebar admin-sidebar-theme">
             <div class="sidebar-brand">

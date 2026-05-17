@@ -118,9 +118,24 @@ document.addEventListener("DOMContentLoaded", () => {
         if (cb) cb.style.display = "none";
         VistaGlobal.logTerminal("system", "Cookies de navegación aceptadas de forma segura.");
     };
+    // Captcha and Auth
     window.toggleCaptcha = (cb) => {
-        const val = typeof cb === 'boolean' ? cb : cb.checked;
+        // cb puede ser un boolean, el checkbox, o un string (token de reCAPTCHA real)
+        const val = typeof cb === 'boolean' ? cb : (typeof cb === 'string' ? true : (cb && cb.checked ? cb.checked : true));
         window.app.authController.toggleCaptcha(val);
+    };
+    
+    window.toggleCaptchaExpired = () => {
+        window.app.authController.toggleCaptcha(false);
+    };
+
+    window.simularGoogleLogin = () => window.app.authController.simularGoogleLogin();
+    
+    window.handleGoogleLogin = (response) => {
+        // En un entorno de producción, enviarías response.credential a tu backend
+        console.log("Token JWT de Google recibido:", response.credential);
+        // Para este proyecto de MVC/Patrones, lo integramos con nuestro mock de login
+        window.app.authController.simularGoogleLogin();
     };
     window.validarFormPaso1 = () => window.app.authController.validarBotonPaso1();
     window.procesarRegistroPaso1 = () => window.app.authController.procesarRegistroPaso1();
