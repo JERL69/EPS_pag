@@ -1041,8 +1041,9 @@ button {
 /* ================================================================= */
 .main-dashboard-layout {
     flex-direction: row !important;
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
+    overflow: hidden;
     background-color: var(--clinical-grey);
 }
 
@@ -1055,6 +1056,7 @@ button {
     color: var(--white);
     flex-shrink: 0;
     box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    height: 100%;
 }
 
 .admin-sidebar-theme {
