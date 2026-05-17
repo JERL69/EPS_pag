@@ -148,7 +148,7 @@ button {
 }
 
 .logo-sns-img-large-lobby {
-    height: 55px;
+    height: 85px;
     width: auto;
     object-fit: contain;
     vertical-align: middle;
@@ -1135,7 +1135,7 @@ button {
 }
 
 .sidebar-sns-img-large {
-    height: 55px;
+    height: 80px;
     width: auto;
     object-fit: contain;
     vertical-align: middle;
