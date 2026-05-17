@@ -195,4 +195,46 @@ class VistaGlobal {
             default: return "badge-warning";
         }
     }
+
+    /**
+     * Renderiza los usuarios en la tabla del directorio utilizando el Iterator proporcionado.
+     * @param {UsuarioIterator} iterator 
+     */
+    static renderizarTablaDirectorio(iterator) {
+        const tbody = document.getElementById("admin-directorio-table-body");
+        if (!tbody) return;
+
+        tbody.innerHTML = "";
+        let count = 0;
+
+        iterator.reiniciar();
+        while (iterator.tieneSiguiente()) {
+            const usuario = iterator.siguiente();
+            count++;
+            
+            let detalles = "-";
+            if (usuario.tipo === "DOCTOR" || usuario.tipo === "MEDICO") {
+                detalles = `Especialidad: ${usuario.especialidad || 'General'}`;
+            } else if (usuario.tipo === "PACIENTE") {
+                detalles = `Edad: ${usuario.fechaNacimiento ? new Date().getFullYear() - new Date(usuario.fechaNacimiento).getFullYear() : 'N/A'}`;
+                if (usuario.cronico || (usuario.id % 2 === 0)) { // Mock condición de crónico
+                    detalles += " | <span style='color:var(--danger-red); font-weight:bold;'>Crónico</span>";
+                }
+            }
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td><strong>${usuario.documento || usuario.id}</strong></td>
+                <td>${usuario.nombre || 'Usuario'}</td>
+                <td><span class="status-label-badge badge-info">${usuario.tipo}</span></td>
+                <td><small>${detalles}</small></td>
+                <td><span class="status-label-badge badge-success">Activo</span></td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        if (count === 0) {
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No se encontraron registros para este filtro.</td></tr>`;
+        }
+    }
 }

@@ -157,7 +157,64 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     window.limpiarTerminalLogs = () => VistaGlobal.limpiarConsolaLogs();
 
+    // Patrones Iterator y Template Method (Admin)
+    const ejecutarIterator = (filtro, descripcionLog) => {
+        const directorio = new DirectorioEPSColeccion();
+        directorio.cargarUsuariosDesdeDAO(window.app.authController.usuarioDAO);
+        const iterador = directorio.crearIterador(filtro);
+        VistaGlobal.renderizarTablaDirectorio(iterador);
+        VistaGlobal.logTerminal("visitor", `[Iterator] Recorriendo colección usando filtro: ${descripcionLog}`); // Reutilizo clase visitor para color, o uso una nueva
+    };
+
+    window.iterarTodosLosUsuarios = () => ejecutarIterator('TODOS', 'Todos los usuarios (Pacientes, Médicos, Admin)');
+    window.iterarPacientesCronicos = () => ejecutarIterator('PACIENTES_CRONICOS', 'Solo Pacientes Crónicos');
+    window.iterarMedicosEspecialistas = () => ejecutarIterator('DOCTORES', 'Solo Médicos Especialistas');
+
+    window.generarReporteTemplate = (tipo) => {
+        let reporteObj;
+        let nombreReporte = "";
+
+        if (tipo === 'EPIDEMIOLOGICO') {
+            reporteObj = new ReporteEpidemiologico();
+            nombreReporte = "Epidemiológico";
+        } else if (tipo === 'FINANCIERO') {
+            reporteObj = new ReporteFinanciero();
+            nombreReporte = "Financiero";
+        } else if (tipo === 'EFICIENCIA') {
+            reporteObj = new ReporteEficiencia();
+            nombreReporte = "de Eficiencia Operativa";
+        }
+
+        if (reporteObj) {
+            VistaGlobal.logTerminal("system", `[Template Method] Instanciando el esqueleto del Reporte ${nombreReporte}. Iniciando pasos...`);
+            
+            // Se ejecuta el método plantilla (Template Method) que orquesta todos los pasos
+            const textoFinal = reporteObj.generarReporte();
+            
+            // Mostrar en UI
+            const contenedor = document.getElementById("reporte-generado-container");
+            const contenido = document.getElementById("reporte-content");
+            const titulo = document.getElementById("reporte-title");
+            
+            if (contenedor && contenido && titulo) {
+                contenedor.style.display = "block";
+                titulo.textContent = `Reporte ${nombreReporte} Generado`;
+                
+                // Formatear el texto con saltos de línea para HTML
+                contenido.innerHTML = textoFinal.replace(/\n/g, "<br>");
+                
+                VistaGlobal.logTerminal("system", `[Template Method] ¡Generación completada exitosamente! Se han ejecutado los métodos abstractos sobrescritos por la subclase concreta.`);
+            }
+        }
+    };
+
+    window.imprimirReporte = () => {
+        alert("Simulando envío a impresora o exportación PDF...");
+        VistaGlobal.logTerminal("system", "Enviando spool de impresión del reporte a la impresora virtual...");
+    };
+
     // =================================================================
+
     // 5. GESTIÓN DEL PERFIL, CONTRASEÑA Y VALORACIONES DE MÉDICOS
     // =================================================================
     window.prellenarPerfilPaciente = () => {
