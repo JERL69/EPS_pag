@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Pacientes - Fundación Santa Fe de Bogotá | Patrones de Diseño</title>
+    <!-- Modern Typography from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ================================================================= -->
+    <!-- 1. PANTALLA: LOBBY / LANDING PAGE                                 -->
+    <!-- ================================================================= -->
+    <section id="pantalla-lobby" class="pantalla-seccion activa">
+        <!-- Header Superior Lobby -->
+        <header class="header-lobby">
+            <div class="header-lobby-left">
+                <div class="logo-lobby" id="logo-santafe">
+                    <span class="logo-symbol">❄</span>
+                    <div class="logo-text">
+                        <span class="brand-title">Fundación</span>
+                        <span class="brand-subtitle">Santa Fe de Bogotá</span>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Cuéntanos qué estás buscando" disabled>
+                </div>
+            </div>
+            <div class="header-lobby-right">
+                <a href="#" class="link-dona">¡Dona ya!</a>
+                <button class="btn-ingresa-lobby" onclick="navegarAPantalla('pantalla-auth-welcome')">
+                    <span class="user-icon">👤</span> Ingresa <span class="arrow-down">▼</span>
+                </button>
+                <a href="#" class="link-sedes">Sedes</a>
+                <div class="language-selector">
+                    <span class="flag">🇨🇴</span> Español <span class="arrow-down">▼</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Menú de Navegación Lobby -->
+        <nav class="nav-lobby">
+            <div class="nav-links">
+                <a href="#" class="active">Inicio</a>
+                <a href="#">Nosotros</a>
+                <a href="#">International Patients</a>
+                <a href="#">Servicios en salud</a>
+                <a href="#">Educación</a>
+                <a href="#">Salud poblacional</a>
+                <a href="#">Investigación</a>
+            </div>
+            <button class="btn-ayuda-visual">
+                <span>👁</span> Ayuda visual
+            </button>
+        </nav>
+
+        <!-- Banner Principal Hero -->
+        <div class="hero-lobby">
+            <div class="social-bar">
+                <a href="#">📸</a>
+                <a href="#">👤</a>
+                <a href="#">🎥</a>
+                <a href="#">💼</a>
+                <a href="#">🎵</a>
+            </div>
+            <div class="hero-content">
+                <div class="hero-info-card">
+                    <span class="tag-muy-pronto">▶ Muy pronto</span>
+                    <h1 class="hero-title">¿Y si empezamos por entender lo que sentimos?</h1>
+                    <p class="hero-desc">El 50% de los trastornos mentales comienzan en la infancia...</p>
+                    <button class="btn-agenda-cita-hero" onclick="navegarAPantalla('pantalla-auth-welcome')">Agenda tu cita</button>
+                </div>
+                <div class="hero-image-placeholder">
+                    <!-- Representación del fondo con los niños -->
+                    <div class="kids-overlay-bg"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjetas de Acceso Rápido -->
+        <div class="lobby-quick-cards">
+            <div class="quick-card" onclick="navegarAPantalla('pantalla-auth-welcome')">
+                <span class="card-icon">💼</span>
+                <span>Servicios en salud</span>
+            </div>
+            <div class="quick-card" onclick="navegarAPantalla('pantalla-auth-welcome')">
+                <span class="card-icon">🤓</span>
+                <span>Educación</span>
+            </div>
+            <div class="quick-card" onclick="navegarAPantalla('pantalla-auth-welcome')">
+                <span class="card-icon">🏥</span>
+                <span>Salud poblacional</span>
+            </div>
+            <div class="quick-card" onclick="navegarAPantalla('pantalla-auth-welcome')">
+                <span class="card-icon">🔬</span>
+                <span>Investigación</span>
+            </div>
+        </div>
+
+        <!-- Barra de Cookies -->
+        <div class="cookie-banner" id="cookie-banner">
+            <p>Este sitio utiliza cookies para mejorar tu experiencia de usuario. Si sigues navegando por el sitio, entendemos que aceptas estos términos. <a href="#">Ver política de cookies</a></p>
+            <div class="cookie-buttons">
+                <button class="btn-cookie-accept" onclick="cerrarCookies()">Aceptar</button>
+                <button class="btn-cookie-reject" onclick="cerrarCookies()">No, gracias</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 2. PANTALLA: BIENVENIDO / SELECCION (SPLIT LAYOUT)                -->
+    <!-- ================================================================= -->
+    <section id="pantalla-auth-welcome" class="pantalla-seccion auth-split-layout">
+        <div class="auth-left">
+            <div class="auth-brand-header">
+                <span class="brand-symbol">❄</span>
+                <div class="brand-text">
+                    <span class="brand-main">Fundación Santa Fe de Bogotá</span>
+                    <span class="brand-sub">Portal Pacientes</span>
+                </div>
+            </div>
+            <div class="auth-card-container">
+                <div class="auth-floating-card">
+                    <h2 class="auth-card-title">Bienvenido</h2>
+                    <div class="vertical-teal-bar-subtitle">
+                        <p>Aquí te ofrecemos más para vivir</p>
+                    </div>
+                    <button class="btn-auth-primary" onclick="navegarAPantalla('pantalla-login')">Iniciar sesión</button>
+                    <button class="btn-auth-secondary" onclick="navegarAPantalla('pantalla-register-doc')">Quiero registrarme</button>
+                </div>
+            </div>
+        </div>
+        <div class="auth-right gradient-auth-bg">
+            <button class="btn-top-ayuda-visual">Ayuda visual 👁</button>
+            <div class="auth-right-content">
+                <h3 class="auth-right-title">Estás en buenas manos</h3>
+                <p class="auth-right-text">Aquí podrás agendar tus citas médicas, conocer tu historia clínica, consultar tus resultados, esto y muchas más de una forma fácil y rápida.</p>
+            </div>
+            <footer class="auth-right-footer">
+                <p>Todos los derechos reservados © Fundación Santa Fe de Bogotá 2026</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 3. PANTALLA: REGISTRO - CAPTCHA Y DOCUMENTO (SPLIT LAYOUT)        -->
+    <!-- ================================================================= -->
+    <section id="pantalla-register-doc" class="pantalla-seccion auth-split-layout">
+        <div class="auth-left">
+            <div class="auth-brand-header">
+                <span class="brand-symbol">❄</span>
+                <div class="brand-text">
+                    <span class="brand-main">Fundación Santa Fe de Bogotá</span>
+                    <span class="brand-sub">Portal Pacientes</span>
+                </div>
+            </div>
+            <div class="auth-card-container">
+                <div class="btn-back-auth" onclick="navegarAPantalla('pantalla-auth-welcome')">
+                    <span>◀</span> Atrás
+                </div>
+                <div class="auth-floating-card">
+                    <h2 class="auth-card-title">Regístrate</h2>
+                    <div class="vertical-teal-bar-subtitle">
+                        <p>Validaremos si existe un registro previo con tu documento</p>
+                    </div>
+                    <form onsubmit="event.preventDefault(); procesarRegistroPaso1();">
+                        <div class="form-group-document">
+                            <label class="form-label-auth">Tipo y número de documento *</label>
+                            <div class="document-input-row">
+                                <select id="reg-doc-type" required>
+                                    <option value="CC">C.C.</option>
+                                    <option value="TI">T.I.</option>
+                                    <option value="CE">C.E.</option>
+                                    <option value="PA">P.A.</option>
+                                </select>
+                                <input type="text" id="reg-doc-number" placeholder="Digite documento" required oninput="validarFormPaso1()">
+                            </div>
+                        </div>
+
+                        <!-- Mock ReCAPTCHA Widget -->
+                        <div class="recaptcha-widget-mock">
+                            <div class="recaptcha-checkbox-container">
+                                <input type="checkbox" id="captcha-checkbox" onchange="toggleCaptcha(this)">
+                                <label for="captcha-checkbox" class="recaptcha-label">I'm not a robot</label>
+                            </div>
+                            <div class="recaptcha-logo-side">
+                                <span class="recaptcha-spinner-icon">🔄</span>
+                                <span class="recaptcha-small-text">reCAPTCHA</span>
+                                <a href="#" class="recaptcha-privacy-link">Privacy - Terms</a>
+                            </div>
+                        </div>
+                        <span class="error-captcha-msg" id="error-captcha">Debes completar el captcha para continuar.</span>
+
+                        <button type="submit" class="btn-auth-submit-disabled" id="btn-submit-paso1" disabled>Iniciar validación y registro</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="auth-right photo-auth-bg">
+            <div class="auth-right-content">
+                <h3 class="auth-right-title">Fáciles y rápidas</h3>
+                <p class="auth-right-text">Estás a solo unos pasos.</p>
+            </div>
+            <footer class="auth-right-footer">
+                <p>Todos los derechos reservados © Fundación Santa Fe de Bogotá 2026</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 4. PANTALLA: REGISTRO - FORMULARIO DE DETALLES (SPLIT LAYOUT)      -->
+    <!-- ================================================================= -->
+    <section id="pantalla-register-form" class="pantalla-seccion auth-split-layout">
+        <div class="auth-left">
+            <div class="auth-brand-header">
+                <span class="brand-symbol">❄</span>
+                <div class="brand-text">
+                    <span class="brand-main">Fundación Santa Fe de Bogotá</span>
+                    <span class="brand-sub">Portal Pacientes</span>
+                </div>
+            </div>
+            <div class="auth-card-container">
+                <div class="btn-back-auth" onclick="navegarAPantalla('pantalla-register-doc')">
+                    <span>◀</span> Atrás
+                </div>
+                <div class="auth-floating-card scrollable-card">
+                    <h2 class="auth-card-title">Regístrate</h2>
+                    <div class="vertical-teal-bar-subtitle-form">
+                        <p>Completa tus datos personales para afiliarte</p>
+                    </div>
+                    <form onsubmit="event.preventDefault(); registrarNuevoPaciente();">
+                        <div class="form-grid-2">
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Nombres *</label>
+                                <input type="text" id="reg-form-nombres" placeholder="Digite nombres" required>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Primer apellido *</label>
+                                <input type="text" id="reg-form-apellido1" placeholder="Digite primer apellido" required>
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Segundo apellido</label>
+                                <input type="text" id="reg-form-apellido2" placeholder="Digite segundo apellido">
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Fecha de nacimiento *</label>
+                                <input type="date" id="reg-form-birthdate" required>
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Género *</label>
+                                <select id="reg-form-gender" required>
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="MASCULINO">Masculino</option>
+                                    <option value="FEMENINO">Femenino</option>
+                                    <option value="OTRO">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Nacionalidad *</label>
+                                <select id="reg-form-nationality" required>
+                                    <option value="COLOMBIA">COLOMBIA</option>
+                                    <option value="VENEZUELA">VENEZUELA</option>
+                                    <option value="ESPANA">ESPAÑA</option>
+                                    <option value="USA">USA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Correo electrónico *</label>
+                                <input type="email" id="reg-form-email" placeholder="correo@ejemplo.com" required>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Teléfono móvil *</label>
+                                <input type="tel" id="reg-form-phone" placeholder="300 000 0000" required>
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Contraseña *</label>
+                                <input type="password" id="reg-form-password" placeholder="Mínimo 6 caracteres" required>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-auth">Dirección de residencia *</label>
+                                <input type="text" id="reg-form-address" placeholder="Digite dirección" required>
+                            </div>
+                        </div>
+
+                        <span class="required-field-note">* Campo obligatorio</span>
+                        <button type="submit" class="btn-auth-primary-submit">Siguiente</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="auth-right photo-auth-bg">
+            <div class="auth-right-content">
+                <h3 class="auth-right-title">Fáciles y rápidas</h3>
+                <p class="auth-right-text">Estás a solo unos pasos.</p>
+            </div>
+            <footer class="auth-right-footer">
+                <p>Todos los derechos reservados © Fundación Santa Fe de Bogotá 2026</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 5. PANTALLA: LOGIN DE USUARIO (PACIENTE Y ADMIN)                  -->
+    <!-- ================================================================= -->
+    <section id="pantalla-login" class="pantalla-seccion auth-split-layout">
+        <div class="auth-left">
+            <div class="auth-brand-header">
+                <span class="brand-symbol">❄</span>
+                <div class="brand-text">
+                    <span class="brand-main">Fundación Santa Fe de Bogotá</span>
+                    <span class="brand-sub">Portal Pacientes</span>
+                </div>
+            </div>
+            <div class="auth-card-container">
+                <div class="btn-back-auth" onclick="navegarAPantalla('pantalla-auth-welcome')">
+                    <span>◀</span> Atrás
+                </div>
+                <div class="auth-floating-card">
+                    <h2 class="auth-card-title">Iniciar sesión</h2>
+                    <p class="auth-card-subtitle">Ingresa tus credenciales para acceder a tus servicios</p>
+
+                    <!-- Rol Tab Selector -->
+                    <div class="tabs-rol-login">
+                        <button class="tab-rol active" id="tab-rol-paciente" onclick="cambiarRolLogin('PACIENTE')">Paciente</button>
+                        <button class="tab-rol" id="tab-rol-admin" onclick="cambiarRolLogin('ADMINISTRADOR')">Administrador</button>
+                    </div>
+
+                    <form onsubmit="event.preventDefault(); ejecutarLogin();">
+                        <div class="form-group-field">
+                            <label class="form-label-auth">Correo electrónico / Usuario *</label>
+                            <input type="email" id="login-input-email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <div class="form-group-field">
+                            <label class="form-label-auth">Contraseña *</label>
+                            <input type="password" id="login-input-password" placeholder="••••••••" required>
+                        </div>
+
+                        <div class="login-options-row">
+                            <div class="remember-me">
+                                <input type="checkbox" id="login-remember">
+                                <label for="login-remember">Recordarme</label>
+                            </div>
+                            <a href="#" class="forgot-pass-link" onclick="navegarAPantalla('pantalla-recover-pass')">Olvidé mi contraseña</a>
+                        </div>
+
+                        <button type="submit" class="btn-auth-primary-submit">Ingresar</button>
+                    </form>
+
+                    <!-- Google Sign-In Simulator Button -->
+                    <div class="google-signin-separator">
+                        <span>O ingresa con tu cuenta preferida</span>
+                    </div>
+                    <button class="btn-google-signin" onclick="simularGoogleLogin()">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="google-icon">
+                        Iniciar sesión con Google
+                    </button>
+
+                    <div class="demo-credentials-box">
+                        <strong>Cuentas Demo de Prueba:</strong>
+                        <ul>
+                            <li><strong>Paciente:</strong> <code>juan@demo.com</code> / <code>demo123</code></li>
+                            <li><strong>Admin:</strong> <code>admin@santafe.com</code> / <code>admin123</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="auth-right gradient-auth-bg">
+            <div class="auth-right-content">
+                <h3 class="auth-right-title">Cuidamos lo que más quieres</h3>
+                <p class="auth-right-text">Accede a tus laboratorios, consulta tu historial de citas y descarga tus reportes médicos en un solo lugar.</p>
+            </div>
+            <footer class="auth-right-footer">
+                <p>Todos los derechos reservados © Fundación Santa Fe de Bogotá 2026</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 6. PANTALLA: RECUPERAR CONTRASEÑA                                 -->
+    <!-- ================================================================= -->
+    <section id="pantalla-recover-pass" class="pantalla-seccion auth-split-layout">
+        <div class="auth-left">
+            <div class="auth-brand-header">
+                <span class="brand-symbol">❄</span>
+                <div class="brand-text">
+                    <span class="brand-main">Fundación Santa Fe de Bogotá</span>
+                    <span class="brand-sub">Portal Pacientes</span>
+                </div>
+            </div>
+            <div class="auth-card-container">
+                <div class="btn-back-auth" onclick="navegarAPantalla('pantalla-login')">
+                    <span>◀</span> Atrás
+                </div>
+                <div class="auth-floating-card">
+                    <h2 class="auth-card-title">Recuperar contraseña</h2>
+                    <div class="vertical-teal-bar-subtitle">
+                        <p>Te enviaremos un código de seguridad para restaurar tu cuenta</p>
+                    </div>
+                    <form onsubmit="event.preventDefault(); simularRecuperacionContrasena();">
+                        <div class="form-group-field">
+                            <label class="form-label-auth">Correo electrónico registrado *</label>
+                            <input type="email" id="recover-input-email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <button type="submit" class="btn-auth-primary-submit">Enviar código de recuperación</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="auth-right gradient-auth-bg">
+            <div class="auth-right-content">
+                <h3 class="auth-right-title">Recuperación Rápida</h3>
+                <p class="auth-right-text">Tu seguridad es nuestra prioridad. Restaura tu acceso de forma encriptada y segura.</p>
+            </div>
+            <footer class="auth-right-footer">
+                <p>Todos los derechos reservados © Fundación Santa Fe de Bogotá 2026</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 7. PANTALLA: PANEL DEL PACIENTE (DASHBOARD)                       -->
+    <!-- ================================================================= -->
+    <section id="pantalla-paciente-dashboard" class="pantalla-seccion main-dashboard-layout">
+        <!-- Sidebar Izquierdo -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-symbol-white">❄</span>
+                <div class="brand-text-white">
+                    <span class="brand-main-w">Fundación</span>
+                    <span class="brand-sub-w">Santa Fe de Bogotá</span>
+                </div>
+            </div>
+
+            <!-- Profile Info Widget -->
+            <div class="patient-profile-card">
+                <div class="profile-avatar">JE</div>
+                <div class="profile-info-details">
+                    <h3 class="profile-name" id="user-display-name">Juan Esteban Rivera</h3>
+                    <span class="profile-role">Paciente Afiliado</span>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Links -->
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="mostrarSubModuloPaciente('dashboard-home')">
+                    <span class="nav-icon">🏠</span> Inicio
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloPaciente('modulo-agendar-cita')">
+                    <span class="nav-icon">📅</span> Agendar Cita (State)
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloPaciente('modulo-mis-citas')">
+                    <span class="nav-icon">📋</span> Gestionar Citas
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloPaciente('modulo-mis-doctores')">
+                    <span class="nav-icon">👨‍⚕️</span> Mis Doctores
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloPaciente('modulo-calificar-doctores')">
+                    <span class="nav-icon">⭐</span> Calificar Doctores
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloPaciente('modulo-autorizaciones')">
+                    <span class="nav-icon">🛡️</span> Autorizaciones (Chain)
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloPaciente('modulo-planes-alta')">
+                    <span class="nav-icon">💊</span> Planes de Alta (Memento)
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloPaciente('submodulo-modulo-resultados')">
+                    <span class="nav-icon">🔬</span> Resultados Clínicos (Visitor)
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloPaciente('modulo-perfil')">
+                    <span class="nav-icon">👤</span> Mi Perfil
+                </a>
+                <a href="#" class="nav-item logout-nav-item" onclick="cerrarSesionCompleta()">
+                    <span class="nav-icon">🚪</span> Cerrar Sesión
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Contenido Principal Panel -->
+        <main class="dashboard-main-content">
+            <!-- Header Interno -->
+            <header class="dashboard-top-header">
+                <h2 class="dashboard-module-title" id="dashboard-section-title">Mi Portal Paciente</h2>
+                <div class="user-pill-header">
+                    <span class="active-status-dot"></span>
+                    <span class="user-pill-name" id="user-pill-label">Juan Esteban R.</span>
+                </div>
+            </header>
+
+            <!-- SUB-MÓDULO: HOME / INICIO -->
+            <div id="submodulo-dashboard-home" class="submodulo-seccion active">
+                <div class="welcome-banner-patient">
+                    <h3 class="welcome-greet">¡Hola, <span id="welcome-patient-name">Juan Esteban</span>!</h3>
+                    <p class="welcome-subtext">Bienvenido a tus servicios médicos integrales de la Fundación Santa Fe. ¿Qué deseas hacer hoy?</p>
+                </div>
+
+                <!-- Sección: Tus Citas (3 Cards Mockup) -->
+                <h4 class="section-divider-title">Tus citas</h4>
+                <div class="quick-citas-grid">
+                    <div class="cita-quick-card bg-teal-card" onclick="mostrarSubModuloPaciente('modulo-agendar-cita')">
+                        <span class="quick-card-icon-round bg-white-icon">📅</span>
+                        <div class="quick-card-info">
+                            <h5>Agenda</h5>
+                            <p>Reserva cita presencial o telemedicina</p>
+                        </div>
+                    </div>
+                    <div class="cita-quick-card bg-blue-card" onclick="mostrarSubModuloPaciente('modulo-mis-citas')">
+                        <span class="quick-card-icon-round bg-white-icon">📋</span>
+                        <div class="quick-card-info">
+                            <h5>Gestiona</h5>
+                            <p>Consulta, reprograma o cancela tus citas</p>
+                        </div>
+                    </div>
+                    <div class="cita-quick-card bg-gradient-card" onclick="mostrarSubModuloPaciente('modulo-mis-citas')">
+                        <span class="quick-card-icon-round bg-white-icon">💳</span>
+                        <div class="quick-card-info">
+                            <h5>Paga</h5>
+                            <p>Realiza el copago en línea de tus citas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Más Opciones Para Ti -->
+                <h4 class="section-divider-title">Más opciones para ti</h4>
+                <div class="more-options-grid">
+                    <div class="option-row-card" onclick="mostrarSubModuloPaciente('modulo-resultados')">
+                        <span class="option-card-icon">🔬</span>
+                        <div class="option-card-info">
+                            <h5>Consulta tus resultados clínicos</h5>
+                            <p>Revisa tus laboratorios e imágenes diagnósticas utilizando el patrón <strong>Visitor</strong> para calcular copagos.</p>
+                        </div>
+                        <span class="arrow-right-icon">▶</span>
+                    </div>
+                    <div class="option-row-card" onclick="mostrarSubModuloPaciente('modulo-planes-alta')">
+                        <span class="option-card-icon">💊</span>
+                        <div class="option-card-info">
+                            <h5>Planes de salida hospitalarios</h5>
+                            <p>Visualiza tus recetas médicas y utiliza el patrón <strong>Memento</strong> para deshacer modificaciones en tiempo real.</p>
+                        </div>
+                        <span class="arrow-right-icon">▶</span>
+                    </div>
+                    <div class="option-row-card" onclick="mostrarSubModuloPaciente('modulo-autorizaciones')">
+                        <span class="option-card-icon">🛡️</span>
+                        <div class="option-card-info">
+                            <h5>Autorizaciones médicas</h5>
+                            <p>Solicita procedimientos y evalúa la aprobación secuencial con el patrón <strong>Chain of Responsibility</strong>.</p>
+                        </div>
+                        <span class="arrow-right-icon">▶</span>
+                    </div>
+                </div>
+
+                <!-- Banner Recomendados Bottom -->
+                <div class="recommended-banners-row">
+                    <div class="rec-banner bg-soft-cyan">
+                        <div class="rec-banner-info">
+                            <span class="rec-badge">PODCAST</span>
+                            <h5>El valor de cuidar tu salud mental</h5>
+                            <p>Escucha nuestro nuevo episodio con especialistas infantiles.</p>
+                        </div>
+                    </div>
+                    <div class="rec-banner bg-soft-blue">
+                        <div class="rec-banner-info">
+                            <span class="rec-badge">LABORATORIO</span>
+                            <h5>Chequeo Ejecutivo General</h5>
+                            <p>Agenda tu batería anual de exámenes clínicos con tarifas preferenciales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO: AGENDAR CITA (PATRÓN STATE & FACTORY METHOD) -->
+            <div id="submodulo-modulo-agendar-cita" class="submodulo-seccion">
+                <div class="appointment-scheduling-layout">
+                    <!-- Left Summary Panel -->
+                    <div class="scheduling-left-panel">
+                        <div class="scheduling-summary-header">
+                            <h4>Resumen del Agendamiento</h4>
+                            <p class="pattern-badge-pill">Factory Method & State</p>
+                        </div>
+                        <form id="form-agendar-cita" onsubmit="event.preventDefault(); registrarCitaPaciente();">
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Especialidad médica *</label>
+                                <select id="cita-select-tipo" onchange="cargarSedesYCalcularCita()" required>
+                                    <option value="GENERAL">Medicina General (Copago \$5.000)</option>
+                                    <option value="ESPECIALISTA">Especialidad Clínica (Copago \$25.000)</option>
+                                    <option value="PROCEDIMIENTO">Procedimiento Complejo (Copago \$150.000)</option>
+                                </select>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Sede / IPS *</label>
+                                <select id="cita-select-sede" onchange="cargarConsultoriosCita()" required>
+                                    <!-- Dynamic -->
+                                </select>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Consultorio / Consultor *</label>
+                                <select id="cita-select-consultorio" required>
+                                    <!-- Dynamic -->
+                                </select>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Médico especialista</label>
+                                <input type="text" id="cita-input-doctor" value="Dr. Carlos Mendoza" readonly>
+                            </div>
+
+                            <div class="scheduling-live-summary">
+                                <h5>Costo de Cita Estimado:</h5>
+                                <h3 id="cita-live-cost">\$5.000 COP</h3>
+                                <p class="scheduling-note">La cita se creará automáticamente en estado <strong>Pendiente de Confirmación</strong>.</p>
+                            </div>
+
+                            <button type="submit" class="btn-scheduling-submit">Confirmar Horario y Agendar</button>
+                        </form>
+                    </div>
+
+                    <!-- Right Calendar & Slots Panel -->
+                    <div class="scheduling-right-panel">
+                        <div class="calendar-widget-container">
+                            <div class="calendar-header-row">
+                                <button class="btn-calendar-arrow">◀</button>
+                                <h4>Mayo 2026</h4>
+                                <button class="btn-calendar-arrow">▶</button>
+                            </div>
+                            <div class="calendar-days-grid-labels">
+                                <span>D</span><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span>
+                            </div>
+                            <div class="calendar-days-grid" id="calendar-days">
+                                <!-- Calendar days loaded dynamically, May 14th active -->
+                            </div>
+                        </div>
+
+                        <div class="time-slots-container">
+                            <h4>Horarios Disponibles para <span id="selected-date-label">14 de Mayo, 2026</span></h4>
+                            <div class="time-slots-grid" id="time-slots-grid">
+                                <!-- Dynamic time slots -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO: GESTIONAR CITAS (PATRÓN STATE) -->
+            <div id="submodulo-modulo-mis-citas" class="submodulo-seccion">
+                <div class="citas-gestiona-layout">
+                    <!-- Main Area: Left (Title, Legend, Columns) -->
+                    <div class="citas-gestiona-main">
+                        <div class="citas-gestiona-header">
+                            <h2 class="citas-gestiona-title">Gestiona tus citas</h2>
+                            <button class="btn-gestiona-back" onclick="mostrarSubModuloPaciente('dashboard-home')">◀ Atrás</button>
+                        </div>
+
+                        <!-- Legend/Indicators -->
+                        <div class="citas-gestiona-legend">
+                            <div class="legend-item">
+                                <span class="legend-box box-yellow"></span>
+                                <span class="legend-text">Pendiente confirmación</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-box box-green"></span>
+                                <span class="legend-text">Pagos pendientes</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-box box-blue"></span>
+                                <span class="legend-text">Listo para tu cita</span>
+                            </div>
+                        </div>
+
+                        <!-- 3 Columns Grid -->
+                        <div class="citas-columns-grid">
+                            <!-- Column 1: Pendientes por confirmar -->
+                            <div class="cita-column-card">
+                                <h4 class="column-header-title text-yellow">Pendientes por confirmar</h4>
+                                <div class="column-cards-stack" id="stack-pendientes-confirmar">
+                                    <!-- Dynamic cards loaded here -->
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Pendiente por pagar -->
+                            <div class="cita-column-card">
+                                <h4 class="column-header-title text-green">Pendiente por pagar</h4>
+                                <div class="column-cards-stack" id="stack-pendientes-pagar">
+                                    <!-- Dynamic cards loaded here -->
+                                </div>
+                            </div>
+
+                            <!-- Column 3: Listo para tu cita -->
+                            <div class="cita-column-card">
+                                <h4 class="column-header-title text-blue">Listo para tu cita</h4>
+                                <div class="column-cards-stack" id="stack-listo-cita">
+                                    <!-- Dynamic cards loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Area: Right (Search & Actions) -->
+                    <aside class="citas-gestiona-sidebar">
+                        <div class="sidebar-mas-opciones">
+                            <div class="mas-opciones-header">
+                                <span class="opciones-title">Más opciones</span>
+                                <div class="opciones-icons">
+                                    <span class="opc-icon" title="Reloj">🕒</span>
+                                    <span class="opc-icon" title="Calendario">📅</span>
+                                    <span class="opc-icon" title="Imprimir">🖨️</span>
+                                    <span class="opc-icon" title="Ayuda">❓</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-buscar-cita">
+                            <h4 class="buscar-title">Buscar cita</h4>
+                            <div class="buscar-input-group">
+                                <input type="date" id="buscar-cita-date" class="buscar-date-input" onchange="filtrarCitasPorFecha(this.value)">
+                                <span class="buscar-calendar-icon">📅</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Extra button to easily schedule -->
+                        <button class="btn-scheduling-submit" style="width:100%; margin-top:20px;" onclick="mostrarSubModuloPaciente('modulo-agendar-cita')">+ Agendar Nueva Cita</button>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO: AUTORIZACIONES (PATRÓN CHAIN OF RESPONSIBILITY) -->
+            <div id="submodulo-modulo-autorizaciones" class="submodulo-seccion">
+                <div class="autorizaciones-layout">
+                    <!-- Formulario de Solicitud -->
+                    <div class="card-option-box">
+                        <h3>Solicitar Autorización Médica</h3>
+                        <p class="card-option-desc">Las solicitudes se derivan automáticamente a través de la cadena de aprobaciones corporativas según los rangos presupuestales establecidos.</p>
+                        <form onsubmit="event.preventDefault(); enviarSolicitudAutorizacion();">
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Procedimiento solicitado *</label>
+                                <input type="text" id="auth-proc-name" placeholder="Ej. Resonancia Magnética de Cerebro" required>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Costo estimado del procedimiento (COP) *</label>
+                                <input type="number" id="auth-proc-cost" placeholder="Ej. 650000" required>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Descripción / Diagnóstico justificante</label>
+                                <textarea id="auth-proc-desc" rows="3" placeholder="Digite la justificación clínica del procedimiento..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-auth-primary-submit">Enviar Solicitud a Cadena de Aprobación</button>
+                        </form>
+                    </div>
+
+                    <!-- Historial y Visor de Cadena en Tiempo Real -->
+                    <div class="card-option-box">
+                        <h3>Tus Solicitudes</h3>
+                        <div class="auth-requests-stack" id="auth-requests-stack">
+                            <!-- Dynamic list of authorizations -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalle y Diagrama Dinámico de Cadena de Aprobación -->
+                <div class="card-option-box full-width-card" id="card-cadena-pipeline" style="display: none;">
+                    <h3>Visualizador de Cadena de Aprobación (Chain of Responsibility)</h3>
+                    <div class="chain-pipeline-flow" id="chain-pipeline-flow">
+                        <!-- Dynamic pipeline states withGP, Specialist, Board, Manager -->
+                    </div>
+                    <div class="chain-pipeline-details" id="chain-pipeline-details">
+                        <!-- Details on which hander checked and decision -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO: PLANES DE ALTA (PATRÓN MEMENTO) -->
+            <div id="submodulo-modulo-planes-alta" class="submodulo-seccion">
+                <div class="planes-alta-layout">
+                    <!-- Lista de Planes de Alta -->
+                    <div class="card-option-box" id="card-planes-alta-lista">
+                        <h3>Planes de Alta Activos</h3>
+                        <p class="card-option-desc">Consulta los planes de tratamiento clínicos prescritos por tus especialistas al momento de tu egreso hospitalario.</p>
+                        <div class="planes-stack" id="planes-stack">
+                            <!-- Dynamic plans -->
+                        </div>
+                    </div>
+
+                    <!-- Editor de Alta (Para simular edición médica + Memento Undo) -->
+                    <div class="card-option-box" id="card-planes-alta-editor" style="display: none;">
+                        <div class="editor-header-row">
+                            <h3>Modificar Plan de Tratamiento</h3>
+                            <button class="btn-undo-memento" id="btn-undo-memento" onclick="deshacerPlanAltaMemento()">
+                                <span class="undo-icon">↩</span> Deshacer Cambios (Memento Stack)
+                            </button>
+                        </div>
+                        <p class="card-option-desc">Como especialista médico, puedes ajustar la dosificación, añadir recomendaciones o re-programar controles.</p>
+                        <form onsubmit="event.preventDefault(); guardarPlanAltaConMemento();">
+                            <input type="hidden" id="edit-plan-id">
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Medicamentos y Dosis Prescritas *</label>
+                                <textarea id="edit-plan-meds" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Recomendaciones y Dieta *</label>
+                                <textarea id="edit-plan-recs" rows="3" required></textarea>
+                            </div>
+                            <div class="form-grid-2">
+                                <div class="form-group-field">
+                                    <label class="form-label-scheduling">Diagnóstico Principal</label>
+                                    <input type="text" id="edit-plan-diagnostico" readonly>
+                                </div>
+                                <div class="form-group-field">
+                                    <label class="form-label-scheduling">Próximo Control Clínico</label>
+                                    <input type="text" id="edit-plan-control" placeholder="Ej. Control en 15 días con cardiología">
+                                </div>
+                            </div>
+                            <div class="editor-buttons-row">
+                                <button type="submit" class="btn-auth-primary-submit">Guardar Versión de Plan</button>
+                                <button type="button" class="btn-auth-secondary" onclick="cancelarEdicionPlan()">Volver a la Lista</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Memento Caretaker Log Stack (Lógica Pedagógica) -->
+                    <div class="card-option-box" id="card-memento-stack-log">
+                        <h3>Historial de Puntos de Restauración en Memento</h3>
+                        <p class="card-option-desc">Visualiza las "capturas de pantalla" (Mementos) guardadas en la pila de historial del Caretaker para el plan seleccionado.</p>
+                        <div class="mementos-list-stack" id="mementos-list-stack">
+                            <!-- List of saved versions in memory stack -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO: RESULTADOS CLÍNICOS (PATRÓN VISITOR) -->
+            <div id="submodulo-modulo-resultados" class="submodulo-seccion">
+                <div class="resultados-layout">
+                    <!-- Lista de Resultados (Laboratorios e Imágenes) -->
+                    <div class="card-option-box">
+                        <h3>Resultados de Exámenes</h3>
+                        <p class="card-option-desc">A continuación se muestran tus laboratorios e imágenes de radiología pre-cargados. Puedes aplicar operaciones polimórficas externas con el patrón **Visitor**.</p>
+
+                        <div class="visitor-buttons-bar">
+                            <button class="btn-visitor-action btn-visitor-factura" onclick="ejecutarFacturacionVisitor()">
+                                🧮 Calcular Facturación Total (Visitor)
+                            </button>
+                            <button class="btn-visitor-action btn-visitor-export" onclick="ejecutarExportadorHTMLVisitor()">
+                                📄 Exportar Reportes a HTML (Visitor)
+                            </button>
+                        </div>
+
+                        <div class="resultados-cards-stack" id="resultados-cards-stack">
+                            <!-- Dynamic loaded exams -->
+                        </div>
+                    </div>
+
+                    <!-- Visor de Operación Visitor (Output) -->
+                    <div class="card-option-box" id="card-visitor-output" style="display: none;">
+                        <h3 id="visitor-output-title">Factura Generada Polimórficamente</h3>
+                        <div class="visitor-output-container" id="visitor-output-container">
+                            <!-- Raw invoice or Rendered HTML -->
+                        </div>
+                        <button class="btn-auth-secondary" onclick="cerrarVisorVisitor()">Cerrar Visor</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO: MIS DOCTORES -->
+            <div id="submodulo-modulo-mis-doctores" class="submodulo-seccion">
+                <div class="card-option-box full-width-card">
+                    <h3>Mis Doctores</h3>
+                    <p class="card-option-desc">Doctores que te han atendido en la Fundación Santa Fe de Bogotá. Tenlos en cuenta para pedir tus próximas citas.</p>
+                    <div class="doctors-grid" id="mis-doctores-grid">
+                        <div class="doctor-card">
+                            <div class="doctor-avatar">👨‍⚕️</div>
+                            <div class="doctor-info">
+                                <h4>Dr. Carlos Mendoza</h4>
+                                <p class="doc-spec">Medicina General</p>
+                                <p class="doc-detail">📍 Consultorio 301 - Sede Principal FSFB</p>
+                                <span class="doc-rating-pill">⭐ 5.0 (Excelente)</span>
+                            </div>
+                        </div>
+                        <div class="doctor-card">
+                            <div class="doctor-avatar">👩‍⚕️</div>
+                            <div class="doctor-info">
+                                <h4>Dra. Clara Rojas</h4>
+                                <p class="doc-spec">Cardiología Infantil</p>
+                                <p class="doc-detail">📍 Consultorio 504 - Sede Infantil FSFB</p>
+                                <span class="doc-rating-pill">⭐ 4.8 (Muy Recomendado)</span>
+                            </div>
+                        </div>
+                        <div class="doctor-card">
+                            <div class="doctor-avatar">👨‍⚕️</div>
+                            <div class="doctor-info">
+                                <h4>Dr. Gabriel Silva</h4>
+                                <p class="doc-spec">Radiología e Imágenes</p>
+                                <p class="doc-detail">📍 Sala de Escáner 02 - Pabellón Quirúrgico FSFB</p>
+                                <span class="doc-rating-pill">⭐ 4.9 (Excelente)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO: CALIFICAR DOCTORES -->
+            <div id="submodulo-modulo-calificar-doctores" class="submodulo-seccion">
+                <div class="card-option-box">
+                    <h3>Calificación de Doctores</h3>
+                    <p class="card-option-desc">Puntúa a los profesionales médicos de la Fundación Santa Fe que te han brindado atención.</p>
+                    <form onsubmit="event.preventDefault(); calificarDoctorSubmit();">
+                        <div class="form-group-field">
+                            <label class="form-label-scheduling">Seleccione el Doctor *</label>
+                            <select id="calificar-select-doctor" required>
+                                <option value="Dr. Carlos Mendoza">Dr. Carlos Mendoza (Medicina General)</option>
+                                <option value="Dra. Clara Rojas">Dra. Clara Rojas (Cardiología)</option>
+                                <option value="Dr. Gabriel Silva">Dr. Gabriel Silva (Radiología)</option>
+                            </select>
+                        </div>
+                        <div class="form-group-field">
+                            <label class="form-label-scheduling">Tu Puntuación (Estrellas) *</label>
+                            <div class="rating-stars-container">
+                                <span class="star-rating-btn active" data-value="1" onclick="seleccionarEstrellasCalificar(1)">★</span>
+                                <span class="star-rating-btn active" data-value="2" onclick="seleccionarEstrellasCalificar(2)">★</span>
+                                <span class="star-rating-btn active" data-value="3" onclick="seleccionarEstrellasCalificar(3)">★</span>
+                                <span class="star-rating-btn active" data-value="4" onclick="seleccionarEstrellasCalificar(4)">★</span>
+                                <span class="star-rating-btn active" data-value="5" onclick="seleccionarEstrellasCalificar(5)">★</span>
+                            </div>
+                            <input type="hidden" id="calificar-stars-value" value="5">
+                        </div>
+                        <div class="form-group-field">
+                            <label class="form-label-scheduling">Comentarios y Observaciones</label>
+                            <textarea id="calificar-comentarios" rows="3" placeholder="Comparte tu experiencia con este doctor..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-auth-primary-submit">Puntuar Doctor</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO: MI PERFIL -->
+            <div id="submodulo-modulo-perfil" class="submodulo-seccion">
+                <div class="perfil-layout">
+                    <!-- Datos Personales -->
+                    <div class="card-option-box">
+                        <h3>Mi Perfil de Afiliado</h3>
+                        <p class="card-option-desc">Modifica tus datos de contacto y revisa tus convenios de afiliación vigentes.</p>
+                        <form onsubmit="event.preventDefault(); actualizarPerfilSubmit();">
+                            <div class="form-grid-2">
+                                <div class="form-group-field">
+                                    <label class="form-label-scheduling">Nombres y Apellidos</label>
+                                    <input type="text" id="perfil-nombres" value="Juan Esteban Rivera" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label class="form-label-scheduling">Teléfono Móvil</label>
+                                    <input type="tel" id="perfil-telefono" value="312 456 7890" required>
+                                </div>
+                            </div>
+                            <div class="form-grid-2">
+                                <div class="form-group-field">
+                                    <label class="form-label-scheduling">Dirección de Residencia</label>
+                                    <input type="text" id="perfil-direccion" value="Calle 127 #15-32, Bogotá" required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label class="form-label-scheduling">Aseguradora y Convenio *</label>
+                                    <input type="text" id="perfil-convenio" value="Fiduprevisora FOMAG - La Previsora S.A." required>
+                                </div>
+                            </div>
+                            <div class="form-grid-2">
+                                <div class="form-group-field">
+                                    <label class="form-label-scheduling">Ciudad de Nacimiento *</label>
+                                    <input type="text" id="perfil-ciudad-nac" value="Bogotá D.C." required>
+                                </div>
+                                <div class="form-group-field">
+                                    <label class="form-label-scheduling">Correo Electrónico</label>
+                                    <input type="email" id="perfil-correo" value="juan@demo.com" readonly style="background-color:#e2e8f0; cursor:not-allowed;">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-auth-primary" style="margin-top:10px; width:fit-content; padding:10px 24px;">Guardar Cambios</button>
+                        </form>
+                    </div>
+
+                    <!-- Cambiar Contraseña (Matching last image requirements) -->
+                    <div class="card-option-box">
+                        <h3>Cambiar contraseña</h3>
+                        
+                        <div class="security-policy-box">
+                            <p style="font-weight:600; font-size:12px; margin-bottom:8px; color:var(--text-dark);">Para crear tu contraseña debes tener en cuenta que:</p>
+                            <ul class="security-policy-list">
+                                <li id="rule-len">❌ Longitud mínima de 12 caracteres.</li>
+                                <li id="rule-upper">❌ Al menos una letra mayúscula.</li>
+                                <li id="rule-lower">❌ Al menos una letra minúscula.</li>
+                                <li id="rule-num">❌ Al menos un carácter numérico.</li>
+                                <li id="rule-special">❌ Al menos un carácter especial.</li>
+                                <li>✔️ Cada 90 días caducará la contraseña.</li>
+                            </ul>
+                        </div>
+
+                        <form onsubmit="event.preventDefault(); cambiarPasswordSubmit();">
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Contraseña antigua *</label>
+                                <input type="password" id="pass-old" placeholder="Digite contraseña antigua" required>
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Contraseña nueva *</label>
+                                <input type="password" id="pass-new" placeholder="Digite contraseña nueva" required oninput="validarReglasPassword()">
+                            </div>
+                            <div class="form-group-field">
+                                <label class="form-label-scheduling">Confirmar contraseña *</label>
+                                <input type="password" id="pass-confirm" placeholder="Confirme contraseña nueva" required>
+                            </div>
+                            <button type="submit" class="btn-auth-primary-submit" style="margin-top:10px;">Guardar Nueva Contraseña</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consola de Trazabilidad Pedagógica (Para la demostración de patrones) -->
+            <footer class="pedagogical-terminal-console">
+                <div class="terminal-header">
+                    <span class="terminal-title">🖥️ Consola de Trazabilidad de Patrones de Comportamiento</span>
+                    <button class="btn-clear-terminal" onclick="limpiarTerminalLogs()">Limpiar Consola</button>
+                </div>
+                <div class="terminal-body" id="terminal-logs-body">
+                    <!-- Live logs of pattern interactions will appear here -->
+                </div>
+            </footer>
+        </main>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- 8. PANTALLA: PANEL DE ADMINISTRADOR (DASHBOARD)                   -->
+    <!-- ================================================================= -->
+    <section id="pantalla-admin-dashboard" class="pantalla-seccion main-dashboard-layout">
+        <!-- Sidebar Admin -->
+        <aside class="dashboard-sidebar admin-sidebar-theme">
+            <div class="sidebar-brand">
+                <span class="brand-symbol-white">❄</span>
+                <div class="brand-text-white">
+                    <span class="brand-main-w">Fundación</span>
+                    <span class="brand-sub-w">Santa Fe - Admin</span>
+                </div>
+            </div>
+
+            <!-- Profile Info Widget -->
+            <div class="patient-profile-card">
+                <div class="profile-avatar bg-admin-avatar">AD</div>
+                <div class="profile-info-details">
+                    <h3 class="profile-name">Administrador EPS</h3>
+                    <span class="profile-role">Gestión e Infraestructura</span>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Links -->
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="mostrarSubModuloAdmin('admin-dashboard-home')">
+                    <span class="nav-icon">🏠</span> Inicio
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloAdmin('admin-citas')">
+                    <span class="nav-icon">📅</span> Control de Citas (State)
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloAdmin('admin-autorizaciones')">
+                    <span class="nav-icon">🛡️</span> Autorizaciones (Chain)
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloAdmin('admin-directorio')">
+                    <span class="nav-icon">📇</span> Directorio EPS (Iterator)
+                </a>
+                <a href="#" class="nav-item" onclick="mostrarSubModuloAdmin('admin-reportes')">
+                    <span class="nav-icon">📊</span> Reportes (Template)
+                </a>
+                <a href="#" class="nav-item logout-nav-item" onclick="cerrarSesionCompleta()">
+                    <span class="nav-icon">🚪</span> Cerrar Sesión
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Contenido Admin -->
+        <main class="dashboard-main-content">
+            <header class="dashboard-top-header">
+                <h2 class="dashboard-module-title">Panel de Control General EPS</h2>
+                <div class="user-pill-header bg-admin-pill">
+                    <span class="active-status-dot"></span>
+                    <span class="user-pill-name">Admin Principal</span>
+                </div>
+            </header>
+
+            <!-- SUB-MÓDULO ADMIN: HOME / INICIO -->
+            <div id="submodulo-admin-dashboard-home" class="submodulo-seccion active">
+                <div class="welcome-banner-patient admin-banner">
+                    <h3 class="welcome-greet">¡Hola, <span id="welcome-admin-name">Administrador Principal</span>!</h3>
+                    <p class="welcome-subtext">Resumen ejecutivo del estado de la Fundación Santa Fe de Bogotá. Monitorea las métricas en tiempo real.</p>
+                </div>
+
+                <!-- Estadísticas Globales Recalculadas por Iterator -->
+                <h4 class="section-divider-title">Estado Global de la EPS (Iterator Pattern)</h4>
+                <div class="admin-stats-summary-grid" id="admin-stats-grid">
+                    <div class="stat-card bg-soft-blue">
+                        <span class="stat-icon">👥</span>
+                        <div class="stat-info">
+                            <h5>Total Pacientes</h5>
+                            <h3 id="stat-total-pacientes">1,245</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card bg-soft-green">
+                        <span class="stat-icon">📅</span>
+                        <div class="stat-info">
+                            <h5>Citas Hoy</h5>
+                            <h3 id="stat-citas-hoy">128</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card bg-soft-cyan">
+                        <span class="stat-icon">🏥</span>
+                        <div class="stat-info">
+                            <h5>En Atención</h5>
+                            <h3 id="stat-en-atencion">14</h3>
+                        </div>
+                    </div>
+                    <div class="stat-card bg-soft-orange">
+                        <span class="stat-icon">🛡️</span>
+                        <div class="stat-info">
+                            <h5>Autorizaciones Pend.</h5>
+                            <h3 id="stat-auth-pendientes">7</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-citas-grid" style="margin-top: 30px;">
+                    <div class="cita-quick-card bg-teal-card" onclick="mostrarSubModuloAdmin('admin-citas')">
+                        <span class="quick-card-icon-round bg-white-icon">📅</span>
+                        <div class="quick-card-info">
+                            <h5>Control de Citas</h5>
+                            <p>Forzar cambios de estado (State)</p>
+                        </div>
+                    </div>
+                    <div class="cita-quick-card bg-blue-card" onclick="mostrarSubModuloAdmin('admin-directorio')">
+                        <span class="quick-card-icon-round bg-white-icon">📇</span>
+                        <div class="quick-card-info">
+                            <h5>Directorio EPS</h5>
+                            <p>Búsquedas y filtros (Iterator)</p>
+                        </div>
+                    </div>
+                    <div class="cita-quick-card bg-gradient-card" onclick="mostrarSubModuloAdmin('admin-reportes')">
+                        <span class="quick-card-icon-round bg-white-icon">📊</span>
+                        <div class="quick-card-info">
+                            <h5>Reportes</h5>
+                            <p>Generar informes (Template)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO ADMIN: CONTROL DE CITAS -->
+            <div id="submodulo-admin-citas" class="submodulo-seccion">
+
+
+                <div class="card-option-box full-width-card">
+                    <h3>Listado de Citas en el Sistema (Iterator Pattern)</h3>
+                    <p class="card-option-desc">Audita las reservas registradas por todos los afiliados del portal y aplica transiciones del patrón **State** (Confirmar, Marcar Atendida o Cancelar).</p>
+                    <div class="appointments-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Cita</th>
+                                    <th>Paciente</th>
+                                    <th>Especialidad</th>
+                                    <th>Sede / Consultorio</th>
+                                    <th>Fecha y Hora</th>
+                                    <th>Estado Actual</th>
+                                    <th>Acciones Permitidas (State Transitions)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-citas-table-body">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO ADMIN: AUDITAR AUTORIZACIONES -->
+            <div id="submodulo-admin-autorizaciones" class="submodulo-seccion">
+                <div class="card-option-box full-width-card">
+                    <h3>Auditoría e Historial de Autorizaciones Complejas</h3>
+                    <p class="card-option-desc">Consulta el registro consolidado de solicitudes de procedimientos clínicos, con el detalle exacto de qué eslabón en la Cadena de Responsabilidad firmó y selló la aprobación.</p>
+                    <div class="appointments-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Solicitud</th>
+                                    <th>Paciente</th>
+                                    <th>Procedimiento</th>
+                                    <th>Costo Declarado</th>
+                                    <th>Estado Aprobación</th>
+                                    <th>Enrutamiento de la Cadena</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-auth-table-body">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO ADMIN: DIRECTORIO (ITERATOR) -->
+            <div id="submodulo-admin-directorio" class="submodulo-seccion">
+                <div class="card-option-box full-width-card">
+                    <h3>Directorio General de la EPS (Iterator Pattern)</h3>
+                    <p class="card-option-desc">Utiliza iteradores específicos para recorrer de manera secuencial y segura las colecciones de usuarios (Pacientes, Médicos, Administradores) sin exponer la estructura interna de los datos.</p>
+                    
+                    <div class="visitor-buttons-bar" style="margin-bottom: 20px;">
+                        <button class="btn-visitor-action btn-visitor-export" onclick="iterarTodosLosUsuarios()">
+                            👥 Listar Todos
+                        </button>
+                        <button class="btn-visitor-action btn-visitor-factura" onclick="iterarPacientesCronicos()">
+                            ❤️ Solo Pacientes Crónicos
+                        </button>
+                        <button class="btn-visitor-action" style="background-color: #f59e0b; color: white;" onclick="iterarMedicosEspecialistas()">
+                            👨‍⚕️ Solo Médicos
+                        </button>
+                    </div>
+
+                    <div class="appointments-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID / Documento</th>
+                                    <th>Nombre Completo</th>
+                                    <th>Rol en el Sistema</th>
+                                    <th>Detalles / Especialidad</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-directorio-table-body">
+                                <!-- Filas generadas por el Iterator -->
+                                <tr>
+                                    <td colspan="5" style="text-align: center; color: var(--text-muted);">Selecciona un filtro arriba para iterar los registros.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-MÓDULO ADMIN: REPORTES (TEMPLATE METHOD) -->
+            <div id="submodulo-admin-reportes" class="submodulo-seccion">
+                <div class="card-option-box full-width-card">
+                    <h3>Generación de Reportes Oficiales (Template Method Pattern)</h3>
+                    <p class="card-option-desc">El Template Method define el esqueleto del algoritmo de generación de reportes (Conectar BD, Recopilar Datos, Formatear, Exportar). Cada tipo de reporte sobreescribe pasos específicos pero mantiene la estructura base.</p>
+                    
+                    <div class="quick-citas-grid" style="margin-bottom: 30px; grid-template-columns: repeat(3, 1fr);">
+                        <div class="cita-quick-card bg-soft-cyan" onclick="generarReporteTemplate('EPIDEMIOLOGICO')">
+                            <span class="quick-card-icon-round" style="background: white;">🦠</span>
+                            <div class="quick-card-info">
+                                <h5>Reporte Epidemiológico</h5>
+                                <p>Morbilidad y diagnósticos</p>
+                            </div>
+                        </div>
+                        <div class="cita-quick-card bg-soft-green" onclick="generarReporteTemplate('FINANCIERO')">
+                            <span class="quick-card-icon-round" style="background: white;">💰</span>
+                            <div class="quick-card-info">
+                                <h5>Reporte Financiero</h5>
+                                <p>Copagos y costos de EPS</p>
+                            </div>
+                        </div>
+                        <div class="cita-quick-card bg-soft-blue" onclick="generarReporteTemplate('EFICIENCIA')">
+                            <span class="quick-card-icon-round" style="background: white;">⏱️</span>
+                            <div class="quick-card-info">
+                                <h5>Reporte de Eficiencia</h5>
+                                <p>Tiempos de atención clínica</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="reporte-generado-container" style="display: none; border: 1px solid var(--clinical-border); border-radius: var(--radius-md); overflow: hidden;">
+                        <div style="background-color: var(--clinical-bg-soft); padding: 15px 20px; border-bottom: 1px solid var(--clinical-border); display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin:0; color: var(--primary-blue);" id="reporte-title">Vista Previa del Reporte</h4>
+                            <button class="btn-auth-primary" style="margin:0; padding: 6px 15px; width: auto;" onclick="imprimirReporte()">🖨️ Imprimir PDF</button>
+                        </div>
+                        <div style="padding: 20px; font-family: monospace; font-size: 13px; line-height: 1.6; max-height: 400px; overflow-y: auto; background-color: #fafafa; color: #333;" id="reporte-content">
+                            <!-- El reporte generado por Template Method se inyecta aquí -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consola de Trazabilidad Pedagógica Admin -->
+            <footer class="pedagogical-terminal-console">
+                <div class="terminal-header">
+                    <span class="terminal-title">🖥️ Consola de Trazabilidad de Patrones de Comportamiento (Administración)</span>
+                    <button class="btn-clear-terminal" onclick="limpiarTerminalLogs()">Limpiar Consola</button>
+                </div>
+                <div class="terminal-body" id="terminal-logs-body-admin">
+                    <!-- Logs appear here -->
+                </div>
+            </footer>
+        </main>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SCRIPTS DE PATRONES DE DISEÑO Y LÓGICA MVC                        -->
+    <!-- ================================================================= -->
+
+    <!-- 1. MODELO: ENTIDADES Y COMPORTAMIENTO -->
+    <script src="modelo/entidades/Usuario.js"></script>
+    <script src="modelo/entidades/Paciente.js"></script>
+    <script src="modelo/entidades/Administrador.js"></script>
+    <script src="modelo/entidades/Cita.js"></script>
+    <script src="modelo/entidades/SolicitudAutorizacion.js"></script>
+    <script src="modelo/entidades/PlanAlta.js"></script>
+    <script src="modelo/entidades/ResultadoMedico.js"></script>
+    <script src="modelo/entidades/ResultadoLaboratorio.js"></script>
+    <script src="modelo/entidades/ImagenDiagnostica.js"></script>
+
+    <!-- 2. MODELO: IMPLEMENTACIÓN DE PATRONES DE COMPORTAMIENTO -->
+    <script src="modelo/patrones/State.js"></script>
+    <script src="modelo/patrones/ChainOfResponsibility.js"></script>
+    <script src="modelo/patrones/Memento.js"></script>
+    <script src="modelo/patrones/Visitor.js"></script>
+
+    <!-- 3. MODELO: PERSISTENCIA E IM-MEMORY DATA BASE DAOs -->
+    <script src="modelo/dao/BaseDAO.js"></script>
+    <script src="modelo/dao/UsuarioDAO.js"></script>
+    <script src="modelo/dao/CitaDAO.js"></script>
+    <script src="modelo/dao/AutorizacionDAO.js"></script>
+    <script src="modelo/dao/PlanAltaDAO.js"></script>
+    <script src="modelo/dao/ResultadoDAO.js"></script>
+
+    <!-- 4. VISTA: CONTROLADOR DE DOM GLOBAL -->
+    <script src="vista/VistaGlobal.js"></script>
+
+    <!-- 5. CONTROLADORES: GESTIÓN DE FLUJOS -->
+    <script src="controlador/AuthController.js"></script>
+    <script src="controlador/CitaController.js"></script>
+    <script src="controlador/AutorizacionController.js"></script>
+    <script src="controlador/PlanAltaController.js"></script>
+    <script src="controlador/ResultadoController.js"></script>
+
+    <!-- 6. APLICACIÓN PRINCIPAL -->
+    <script src="app.js"></script>
+
+</body>
+</html>
