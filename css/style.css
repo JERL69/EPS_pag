@@ -130,6 +130,30 @@ button {
     cursor: pointer;
 }
 
+.logo-lobby-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.brand-title-large {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    line-height: 1;
+    letter-spacing: 0.5px;
+}
+
+.logo-sns-img-large-lobby {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
 .logo-symbol {
     font-size: 38px;
     color: var(--primary-blue);
