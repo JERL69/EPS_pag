@@ -196,7 +196,7 @@ class ExportadorHTMLVisitor extends ResultadoVisitor {
         let container = `<div class="consolidated-exports-wrapper">`;
         container += `  <div class="export-consolidated-header">`;
         container += `    <h3>Carpeta Médica Consolidada de Resultados</h3>`;
-        container += `    <p>Generado por ExportadorHTMLVisitor - Fundación Santa Fe de Bogotá</p>`;
+        container += `    <p>Generado por ExportadorHTMLVisitor - Sanitas EPS</p>`;
         container += `  </div>`;
         container += this.htmlConsolidado;
         container += `</div>`;

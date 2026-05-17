@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     configurarEventosDOM();
 
     // 7. Iniciar la aplicacion navegando al Lobby Principal por defecto
-    VistaGlobal.logTerminal("system", "Iniciando Portal EPS Fundación Santa Fe de Bogotá...");
+    VistaGlobal.logTerminal("system", "Iniciando Portal EPS Sanitas EPS...");
     VistaGlobal.logTerminal("system", "Sistema cargado exitosamente. Capa DAO mapeada a LocalStorage.");
     VistaGlobal.navegarAPantalla("pantalla-lobby");
 });
