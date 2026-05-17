@@ -532,6 +532,27 @@ button {
     font-weight: bold;
 }
 
+.logo-sns-img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.brand-sns-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.sidebar-sns-img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
 .brand-text {
     display: flex;
     flex-direction: column;
